@@ -9,4 +9,4 @@ d’agencements qui croît de manière explosive avec chaque pièce supplémenta
 Vous devrez donc bien réflechir à vos structures de données et à votre algorithme de
 résolution pour que votre programme réponde avant l’an 3000.
 
-![mem](https://image.prntscr.com/image/umD6RZ_ZTkqWaXH3o7yp8Q.png)
+![mem](https://image.prntscr.com/image/JWPC_8jfRtqGvovbGBHL2Q.png)
