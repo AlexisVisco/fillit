@@ -6,7 +6,7 @@
 /*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 08:42:49 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/14 09:25:39 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/14 16:30:08 by cepalle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,14 @@ static char	max(char a, char b)
 static uint64_t	do_mask(t_tetriminos tet)
 {
 	uint64_t	mask;
-	uint64_t	bit;
 	uint16_t	*it;
 
+	mask = 0;
 	it = (uint16_t *)(&mask);
-	bit = 1;
-	it[(short)tet.crds[0].y] += bit << (tet.crds[0].x + 12);
-	it[(short)tet.crds[1].y] += bit << (tet.crds[1].x + 12);
-	it[(short)tet.crds[2].y] += bit << (tet.crds[2].x + 12);
-	it[(short)tet.crds[3].y] += bit << (tet.crds[3].x +12);
+	it[(short)tet.crds[0].y] |= 1L << tet.crds[0].x;
+	it[(short)tet.crds[1].y] |= 1L << tet.crds[1].x;
+	it[(short)tet.crds[2].y] |= 1L << tet.crds[2].x;
+	it[(short)tet.crds[3].y] |= 1L << tet.crds[3].x;
 	return (mask);
 }
 
