@@ -1,7 +1,8 @@
 NAME= fillit
 CFLAGS= -Wall -Wextra -Werror -O3
-SRC= exit_close.c parse_input.c resolve.c main.c print_ltet.c is_correct.c\
-	 move_corner.c print_ltet_res.c inter_tet.c ft_putchar.c
+SRC= exit_close.c parse_input.c resolve.c main.c print_ltet.c is_correct.c \
+	 move_corner.c print_ltet_res.c inter_tet.c ft_putchar.c resolve_bit.c \
+	 memtet_to_bit.c
 
 all:$(NAME)
 

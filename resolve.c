@@ -6,12 +6,13 @@
 /*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:25:47 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/14 08:44:18 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/14 09:04:57 by cepalle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+/*
 static char	can_pose(t_memtet *memtet, short p, short x, short y)
 {
 	short	k;
@@ -58,7 +59,7 @@ static char	resolve_aux(t_memtet *memtet, short p)
 	}
 	return (0);
 }
-
+*/
 void		resolve(t_memtet *memtet)
 {
 	/*
