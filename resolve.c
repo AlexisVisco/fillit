@@ -6,7 +6,7 @@
 /*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:25:47 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/13 20:00:12 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/14 08:44:18 by cepalle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,22 @@ static char	resolve_aux(t_memtet *memtet, short p)
 
 void		resolve(t_memtet *memtet)
 {
+	/*
 	memtet->c = 2;
 	while (memtet->c * memtet->c < 4 * memtet->l)
 		memtet->c++;
 	while (!resolve_aux(memtet, 0))
 		memtet->c++;
+	*/
+	size_t i;
+
+	i = 0;
+	t_memtet_bit memtet_bit;
+	memtet_to_bit(&memtet_bit, memtet);
+	while (i < 26)
+	{
+		memtet->lcrds[i].x = memtet_bit.lcrds[i].x;
+		memtet->lcrds[i].y = memtet_bit.lcrds[i].y;
+		i++;
+	}
 }
