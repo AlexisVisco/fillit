@@ -6,7 +6,7 @@
 #    By: cepalle <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 08:52:55 by cepalle           #+#    #+#              #
-#    Updated: 2017/11/16 09:03:00 by cepalle          ###   ########.fr        #
+#    Updated: 2017/11/16 10:09:02 by cepalle          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,10 @@ OBJ= $(SRC:.c=.o)
 all:$(NAME)
 
 $(NAME): $(OBJ)
-	gcc $(CFLAGS) -o $(NAME) $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
 %.o: %.c
-	gcc -c $^ $(CFLAGS) -o $@
+	$(CC) -c $^ $(CFLAGS) -o $@
 
 clean:
 	rm -f $(OBJ)
