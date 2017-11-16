@@ -6,13 +6,13 @@
 /*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 08:37:15 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/16 08:54:06 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/16 09:34:28 by cepalle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void	toggle_tet(uint64_t mask, uint16_t *map, short x, short y)
+static void		toggle_tet(uint64_t mask, uint16_t *map, short x, short y)
 {
 	*((uint64_t *)(map + y)) ^= (mask << x);
 }
@@ -22,38 +22,34 @@ static uint64_t	chek_map(uint64_t mask, uint16_t *map, short x, short y)
 	return (!((*(uint64_t *)(map + y)) & (mask << x)));
 }
 
-static char	resolve_bit_aux(t_memtet_bit *memtet, uint16_t *map, short p)
+static char		resolve_bit_aux(t_memtet_bit *mtet, uint16_t *map, short p)
 {
-	short	xi;
-	short	yi;
-	t_tetriminos_bit tet;
-
-	tet = memtet->ltet[p];
-	yi = 0;
-	while (yi + tet.h < memtet->c)
+	mtet->lcrds[p].y = 0;
+	while (mtet->lcrds[p].y + mtet->ltet[p].h < mtet->c)
 	{
-		xi = 0;
-		while (xi + tet.l < memtet->c)
+		mtet->lcrds[p].x = 0;
+		while (mtet->lcrds[p].x + mtet->ltet[p].l < mtet->c)
 		{
-			if (chek_map(tet.mask, map, xi, yi))
+			if (chek_map(mtet->ltet[p].mask, map, mtet->lcrds[p].x,
+						mtet->lcrds[p].y))
 			{
-				memtet->lcrds[p].x = xi;
-				memtet->lcrds[p].y = yi;
-				toggle_tet(tet.mask, map, xi, yi);
-				if (p + 1 == memtet->l)
+				toggle_tet(mtet->ltet[p].mask, map, mtet->lcrds[p].x,
+						mtet->lcrds[p].y);
+				if (p + 1 == mtet->l)
 					return (1);
-				else if (resolve_bit_aux(memtet, map, p + 1))
+				else if (resolve_bit_aux(mtet, map, p + 1))
 					return (1);
-				toggle_tet(tet.mask, map, xi, yi);
+				toggle_tet(mtet->ltet[p].mask, map, mtet->lcrds[p].y,
+						mtet->lcrds[p].y);
 			}
-			xi++;
+			mtet->lcrds[p].x++;
 		}
-		yi++;
+		mtet->lcrds[p].y++;
 	}
 	return (0);
 }
 
-void		resolve_bit(t_memtet_bit *memtet)
+void			resolve_bit(t_memtet_bit *memtet)
 {
 	uint16_t map[16];
 

@@ -6,20 +6,18 @@
 /*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 08:42:49 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/16 08:47:55 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/16 09:33:20 by cepalle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-#include	<stdio.h>
-
-static char	max(char a, char b)
+static char				max(char a, char b)
 {
 	return (a < b ? b : a);
 }
 
-static uint64_t	do_mask(t_tetriminos tet)
+static uint64_t			do_mask(t_tetriminos tet)
 {
 	uint64_t	mask;
 	uint16_t	*it;
@@ -40,17 +38,15 @@ static t_tetriminos_bit	tet_to_bit(t_tetriminos tet)
 	tet_bit.l = max(tet.crds[0].x, tet.crds[1].x);
 	tet_bit.l = max(tet_bit.l, tet.crds[2].x);
 	tet_bit.l = max(tet_bit.l, tet.crds[3].x);
-
 	tet_bit.h = max(tet.crds[0].y, tet.crds[1].y);
 	tet_bit.h = max(tet_bit.h, tet.crds[2].y);
 	tet_bit.h = max(tet_bit.h, tet.crds[3].y);
-
 	tet_bit.mask = do_mask(tet);
-
 	return (tet_bit);
 }
 
-void	memtet_to_bit(t_memtet_bit *memtet_bit, t_memtet *memtet)
+void					memtet_to_bit(t_memtet_bit *memtet_bit,
+		t_memtet *memtet)
 {
 	short i;
 

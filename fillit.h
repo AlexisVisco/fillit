@@ -6,16 +6,16 @@
 /*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 19:26:00 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/16 08:52:27 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/16 09:07:52 by cepalle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-#include <string.h>
+# include <string.h>
 
-typedef unsigned short int		uint16_t;
+typedef unsigned short int			uint16_t;
 typedef unsigned long long int	uint64_t;
 
 struct	s_coord
@@ -75,6 +75,5 @@ void	ft_putchar(char c);
 char	is_correct(t_memtet *memtet);
 void	memtet_to_bit(t_memtet_bit *memtet_bit, t_memtet *memtet);
 void	ft_bzero(void *s, size_t n);
-
 
 #endif
