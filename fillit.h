@@ -6,7 +6,7 @@
 /*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 19:26:00 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/16 09:07:52 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/16 09:38:13 by cepalle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include <string.h>
 
-typedef unsigned short int			uint16_t;
-typedef unsigned long long int	uint64_t;
+typedef unsigned short int			t_uint16_t;
+typedef unsigned long long int		t_uint64_t;
 
 struct	s_coord
 {
@@ -45,7 +45,7 @@ typedef struct s_memtet	t_memtet;
 
 struct	s_tetriminos_bit
 {
-	uint64_t	mask;
+	t_uint64_t	mask;
 	char		l;
 	char		h;
 };
