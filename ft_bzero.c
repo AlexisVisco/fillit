@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 10:22:41 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/08 18:24:40 by cepalle          ###   ########.fr       */
+/*   Created: 2017/11/07 20:49:25 by cepalle           #+#    #+#             */
+/*   Updated: 2017/11/16 08:51:32 by cepalle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-int		ft_isalpha(int c)
+void	ft_bzero(void *s, size_t n)
 {
-	if (c >= 'a' && c <= 'z')
-		return (1);
-	if (c >= 'A' && c <= 'Z')
-		return (1);
-	return (0);
+	size_t			i;
+	unsigned char	*ss;
+
+	i = 0;
+	ss = (unsigned char *)s;
+	while (i < n)
+		ss[i++] = 0;
 }

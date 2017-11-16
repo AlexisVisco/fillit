@@ -6,14 +6,14 @@
 /*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 16:05:05 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/14 18:25:45 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/16 08:47:41 by cepalle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <unistd.h>
 
-static void	put_tetriminos(t_tetriminos tet)
+void		put_tetriminos(t_tetriminos tet)
 {
 	short	xi;
 	short	yi;

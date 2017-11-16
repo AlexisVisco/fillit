@@ -1,17 +1,25 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: cepalle <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/11/16 08:52:55 by cepalle           #+#    #+#              #
+#    Updated: 2017/11/16 08:53:43 by cepalle          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME= fillit
-LIB= libft/libft.a
 CFLAGS= -Wall -Wextra -Werror
 SRC= exit_close.c parse_input.c resolve.c main.c print_ltet.c is_correct.c \
 	 move_corner.c print_ltet_res.c inter_tet.c ft_putchar.c resolve_bit.c \
-	 memtet_to_bit.c
+	 memtet_to_bit.c ft_bzero.c
 
-all:$(NAME) $(LIB)
+all:$(NAME)
 
 $(NAME):$(SRC)
-	gcc $(CFLAGS) -o $(NAME) $(SRC)  -L./libft/ -lft
-
-$(LIB):
-	make -C libft/ all clean
+	gcc $(CFLAGS) -o $(NAME) $(SRC)
 
 clean:
 

@@ -6,12 +6,11 @@
 /*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 08:37:15 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/14 19:05:26 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/16 08:54:06 by cepalle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft/libft.h"
 
 static void	toggle_tet(uint64_t mask, uint16_t *map, short x, short y)
 {
@@ -20,7 +19,7 @@ static void	toggle_tet(uint64_t mask, uint16_t *map, short x, short y)
 
 static uint64_t	chek_map(uint64_t mask, uint16_t *map, short x, short y)
 {
-	return ((*(uint64_t *)(map + y)) & (mask << x));
+	return (!((*(uint64_t *)(map + y)) & (mask << x)));
 }
 
 static char	resolve_bit_aux(t_memtet_bit *memtet, uint16_t *map, short p)
@@ -31,10 +30,10 @@ static char	resolve_bit_aux(t_memtet_bit *memtet, uint16_t *map, short p)
 
 	tet = memtet->ltet[p];
 	yi = 0;
-	while (yi + tet.l < memtet->c)
+	while (yi + tet.h < memtet->c)
 	{
 		xi = 0;
-		while (xi + tet.h < memtet->c)
+		while (xi + tet.l < memtet->c)
 		{
 			if (chek_map(tet.mask, map, xi, yi))
 			{
@@ -54,21 +53,17 @@ static char	resolve_bit_aux(t_memtet_bit *memtet, uint16_t *map, short p)
 	return (0);
 }
 
-#include <stdio.h>
-
 void		resolve_bit(t_memtet_bit *memtet)
 {
 	uint16_t map[16];
 
-	printf("Resolve_bit start\n");
 	ft_bzero(map, sizeof(uint16_t) * 16);
 	memtet->c = 2;
 	while (memtet->c * memtet->c < 4 * memtet->l)
 		memtet->c++;
-	while (!resolve_bit_aux(memtet, map, 0))
+	while (!resolve_bit_aux(memtet, map, 0) && memtet->c < 16)
 	{
 		ft_bzero(map, sizeof(uint16_t) * 16);
 		memtet->c++;
 	}
-	printf("Resolve_bit end\n");
 }
