@@ -12,12 +12,12 @@
 
 #include "fillit.h"
 
-static char			max(char a, char b)
+static char					max(char a, char b)
 {
 	return (a < b ? b : a);
 }
 
-static t_uint64_t	do_mask(t_tetriminos *tet)
+static t_uint64_t			do_mask(t_tetriminos *tet)
 {
 	t_uint64_t	mask;
 	t_uint16_t	*it;
@@ -31,7 +31,7 @@ static t_uint64_t	do_mask(t_tetriminos *tet)
 	return (mask);
 }
 
-static void			tet_feed_mask(t_tetriminos *tet)
+static void		tet_feed_mask(t_tetriminos *tet)
 {
 	tet->l = max(tet->crds[0].x, tet->crds[1].x);
 	tet->l = max(tet->l, tet->crds[2].x);
@@ -42,10 +42,11 @@ static void			tet_feed_mask(t_tetriminos *tet)
 	tet->mask = do_mask(tet);
 }
 
-void				feed_mask(t_memtet *memtet)
+void						feed_mask(t_memtet *memtet)
 {
 	short i;
 
+	i = 0;
 	while (i < memtet->nb_tet)
 	{
 		tet_feed_mask(&(memtet->ltet[i]));

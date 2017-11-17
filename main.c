@@ -16,21 +16,22 @@
 
 int			main(int argc, const char *argv[])
 {
-	t_memtet	memtet;
+	t_memtet	mtet;
 	int			fd;
 
-	init_memtet(&memtet);
+	init_memtet(&mtet);
 	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) < 0)
 	{
 		write(2, "error\n", 6);
 		return (2);
 	}
-	parse_input(&memtet, fd);
-	move_corner(&memtet);
-	if (!is_correct(&memtet))
+	parse_input(&mtet, fd);
+	move_corner(&mtet);
+	feed_mask(&mtet);
+	if (!is_correct(&mtet))
 		exit_close(fd);
-	resolve(&memtet);
-	print_ltet_res(&memtet);
+	resolve(&mtet);
+	print_ltet_res(&mtet);
 	close(fd);
 	return (0);
 }

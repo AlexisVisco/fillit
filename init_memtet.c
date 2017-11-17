@@ -6,7 +6,7 @@ void	init_memtet(t_memtet *memtet)
 
 	i = 0;
 	memtet->c = 2;
-	memtet->l = 0;
+	memtet->nb_tet = 0;
 	while (i < 26)
 	{
 		memtet->ltet[i].crds[0].x = 0;

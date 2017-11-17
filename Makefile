@@ -14,8 +14,8 @@ CC= gcc
 NAME= fillit
 CFLAGS= -Wall -Wextra -Werror
 SRC= exit_close.c parse_input.c resolve.c main.c print_ltet.c is_correct.c \
-	 move_corner.c print_ltet_res.c inter_tet.c ft_putchar.c resolve_bit.c \
-	 memtet_to_bit.c ft_bzero.c init_memtet.c
+	 move_corner.c print_ltet_res.c inter_tet.c ft_putchar.c \
+	 feed_mask.c ft_bzero.c init_memtet.c
 
 OBJ= $(SRC:.c=.o)
 

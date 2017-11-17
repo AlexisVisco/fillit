@@ -59,16 +59,16 @@ static t_tetriminos	string_to_tet(char *str, int fd)
 
 static void			parse_tet(t_memtet *memtet, int fd)
 {
-	char			buff[21];
-	int				len_read;
+	char	buff[21];
+	int		len_read;
 
 	if ((len_read = read(fd, buff, 20)) == -1)
 		exit_close(fd);
 	buff[len_read] = '\0';
 	if (len_read != 20)
 		exit_close(fd);
-	memtet->ltet[(short)memtet->l] = string_to_tet(buff, fd);
-	memtet->l++;
+	memtet->ltet[(short)memtet->nb_tet] = string_to_tet(buff, fd);
+	memtet->nb_tet++;
 }
 
 void				parse_input(t_memtet *memtet, int fd)

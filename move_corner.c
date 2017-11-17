@@ -37,7 +37,7 @@ void		move_corner(t_memtet *memtet)
 	short	i;
 
 	i = 0;
-	while (i < memtet->l)
+	while (i < memtet->nb_tet)
 	{
 		move_corner_aux(&(memtet->ltet[i]));
 		i++;

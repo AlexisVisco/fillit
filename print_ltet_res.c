@@ -17,7 +17,7 @@ static void	print_inter(t_memtet *memtet, short x, short y)
 	short	k;
 
 	k = 0;
-	while (k < memtet->l)
+	while (k < memtet->nb_tet)
 	{
 		if (inter_tet(&memtet->ltet[k],
 			x - memtet->ltet[k].x,

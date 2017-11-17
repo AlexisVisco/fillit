@@ -40,7 +40,7 @@ void		print_ltet(t_memtet *memtet)
 	short	k;
 
 	k = 0;
-	while (k < memtet->l)
+	while (k < memtet->nb_tet)
 	{
 		put_tetriminos(memtet->ltet[k]);
 		ft_putchar('\n');

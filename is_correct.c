@@ -81,7 +81,7 @@ char		is_correct(t_memtet *memtet)
 	short	k;
 
 	k = 0;
-	while (k < memtet->l)
+	while (k < memtet->nb_tet)
 	{
 		if (!is_not_alone(&memtet->ltet[k]))
 			return (0);
