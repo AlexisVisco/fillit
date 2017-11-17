@@ -20,8 +20,8 @@ static void	print_inter(t_memtet *memtet, short x, short y)
 	while (k < memtet->l)
 	{
 		if (inter_tet(&memtet->ltet[k],
-			x - memtet->lcrds[k].x,
-			y - memtet->lcrds[k].y))
+			x - memtet->ltet[k].x,
+			y - memtet->ltet[k].y))
 		{
 			ft_putchar('A' + k);
 			return ;

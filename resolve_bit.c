@@ -12,57 +12,55 @@
 
 #include "fillit.h"
 
-static void			toggle_tet(t_uint64_t mask, t_uint16_t *map,
-		short x, short y)
+static inline void			toggle_tet(t_tetriminos_bit *tet, t_uint16_t *map)
 {
-	*((t_uint64_t *)(map + y)) ^= (mask << x);
+	*((t_uint64_t *)(map + tet->y)) ^= (tet->mask << tet->x);
 }
 
-static t_uint64_t	chek_map(t_uint64_t mask, t_uint16_t *map,
-		short x, short y)
+static inline t_uint64_t	chek_map(t_tetriminos_bit *tet, t_uint16_t *map)
 {
-	return (!((*(t_uint64_t *)(map + y)) & (mask << x)));
+	return (!((*(t_uint64_t *)(map + tet->y)) & (tet->mask << tet->x)));
 }
 
-static char			resolve_bit_aux(t_memtet_bit *mtet, t_uint16_t *map,
-		short p)
+static char					resolve_bit_aux(t_memtet_bit *mtet,
+	t_uint16_t *map, short p)
 {
-	mtet->lcrds[p].y = 0;
-	while (mtet->lcrds[p].y + mtet->ltet[p].h < mtet->c)
+	t_tetriminos_bit	*tet;
+
+	tet = &(mtet->ltet[p]);
+	tet->y = 0;
+	while (tet->y + tet->h < mtet->c)
 	{
-		mtet->lcrds[p].x = 0;
-		while (mtet->lcrds[p].x + mtet->ltet[p].l < mtet->c)
+		tet->x = 0;
+		while (tet->x + tet->l < mtet->c)
 		{
-			if (chek_map(mtet->ltet[p].mask, map, mtet->lcrds[p].x,
-						mtet->lcrds[p].y))
+			if (chek_map(tet, map))
 			{
-				toggle_tet(mtet->ltet[p].mask, map, mtet->lcrds[p].x,
-						mtet->lcrds[p].y);
+				toggle_tet(tet, map);
 				if (p + 1 == mtet->l)
 					return (1);
 				else if (resolve_bit_aux(mtet, map, p + 1))
 					return (1);
-				toggle_tet(mtet->ltet[p].mask, map, mtet->lcrds[p].x,
-						mtet->lcrds[p].y);
+				toggle_tet(tet, map);
 			}
-			mtet->lcrds[p].x++;
+			tet->x++;
 		}
-		mtet->lcrds[p].y++;
+		tet->y++;
 	}
 	return (0);
 }
 
-void				resolve_bit(t_memtet_bit *memtet)
+void						resolve_bit(t_memtet_bit *mtet)
 {
 	t_uint16_t map[16];
 
 	ft_bzero(map, sizeof(t_uint16_t) * 16);
-	memtet->c = 2;
-	while (memtet->c * memtet->c < 4 * memtet->l)
-		memtet->c++;
-	while (!resolve_bit_aux(memtet, map, 0) && memtet->c < 16)
+	mtet->c = 2;
+	while (mtet->c * mtet->c < 4 * mtet->l)
+		mtet->c++;
+	while (!resolve_bit_aux(mtet, map, 0) && mtet->c < 16)
 	{
 		ft_bzero(map, sizeof(t_uint16_t) * 16);
-		memtet->c++;
+		mtet->c++;
 	}
 }

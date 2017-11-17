@@ -20,8 +20,8 @@ char	inter_ltet(t_memtet *memtet, short p, short x, short y)
 	while (k < p)
 	{
 		if (inter_tet(&memtet->ltet[k],
-			x - memtet->lcrds[k].x,
-			y - memtet->lcrds[k].y))
+			x - memtet->ltet[k].x,
+			y - memtet->ltet[k].y))
 			return (1);
 		k++;
 	}

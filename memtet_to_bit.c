@@ -35,6 +35,8 @@ static t_tetriminos_bit		tet_to_bit(t_tetriminos tet)
 {
 	t_tetriminos_bit	tet_bit;
 
+	tet_bit.x = tet.x;
+	tet_bit.y = tet.y;
 	tet_bit.l = max(tet.crds[0].x, tet.crds[1].x);
 	tet_bit.l = max(tet_bit.l, tet.crds[2].x);
 	tet_bit.l = max(tet_bit.l, tet.crds[3].x);
@@ -55,8 +57,6 @@ void						memtet_to_bit(t_memtet_bit *memtet_bit,
 	memtet_bit->l = memtet->l;
 	while (i < memtet->l)
 	{
-		memtet_bit->lcrds[i].x = memtet->lcrds[i].x;
-		memtet_bit->lcrds[i].y = memtet->lcrds[i].y;
 		memtet_bit->ltet[i] = tet_to_bit(memtet->ltet[i]);
 		i++;
 	}

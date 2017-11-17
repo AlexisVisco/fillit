@@ -13,19 +13,19 @@
 #include "fillit.h"
 #include <stdio.h>
 
-void		resolve(t_memtet *memtet)
+void		resolve(t_memtet *mtet)
 {
 	short			i;
-	t_memtet_bit	memtet_bit;
+	t_memtet_bit	mtet_bit;
 
 	i = 0;
-	memtet_to_bit(&memtet_bit, memtet);
-	resolve_bit(&memtet_bit);
-	memtet->c = memtet_bit.c;
-	while (i < memtet->l)
+	memtet_to_bit(&mtet_bit, mtet);
+	resolve_bit(&mtet_bit);
+	mtet->c = mtet_bit.c;
+	while (i < mtet->l)
 	{
-		memtet->lcrds[i].x = memtet_bit.lcrds[i].x;
-		memtet->lcrds[i].y = memtet_bit.lcrds[i].y;
+		mtet->ltet[i].x = mtet_bit.ltet[i].x;
+		mtet->ltet[i].y = mtet_bit.ltet[i].y;
 		i++;
 	}
 }

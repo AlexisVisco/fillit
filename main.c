@@ -14,40 +14,15 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-static void	init_memtet(t_memtet *memtet)
-{
-	short	i;
-
-	i = 0;
-	memtet->c = 2;
-	memtet->l = 0;
-	while (i < 26)
-	{
-		memtet->ltet[i].crds[0].x = 0;
-		memtet->ltet[i].crds[0].y = 0;
-		memtet->ltet[i].crds[1].x = 0;
-		memtet->ltet[i].crds[1].y = 0;
-		memtet->ltet[i].crds[2].x = 0;
-		memtet->ltet[i].crds[2].y = 0;
-		memtet->ltet[i].crds[3].x = 0;
-		memtet->ltet[i].crds[3].y = 0;
-		memtet->lcrds[i].x = 0;
-		memtet->lcrds[i].y = 0;
-		i++;
-	}
-}
-
 int			main(int argc, const char *argv[])
 {
 	t_memtet	memtet;
 	int			fd;
-	int			lw;
 
 	init_memtet(&memtet);
 	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) < 0)
 	{
-		lw = write(2, "error\n", 6);
-		(void)lw;
+		write(2, "error\n", 6);
 		return (2);
 	}
 	parse_input(&memtet, fd);

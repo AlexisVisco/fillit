@@ -12,9 +12,9 @@
 
 #include "fillit.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, t_size_t n)
 {
-	size_t			i;
+	t_size_t			i;
 	unsigned char	*ss;
 
 	i = 0;
