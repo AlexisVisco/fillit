@@ -10,22 +10,30 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC= gcc
 NAME= fillit
+CC= gcc
 CFLAGS= -Wall -Wextra -Werror
-SRC= exit_close.c parse_input.c resolve.c main.c print_ltet.c is_correct.c \
+
+INCLUDEDIR=includes/
+CFILENAME= exit_close.c parse_input.c resolve.c main.c print_ltet.c is_correct.c \
 	 move_corner.c print_ltet_res.c inter_tet.c ft_putchar.c \
 	 feed_mask.c ft_bzero.c init_memtet.c
 
-OBJ= $(SRC:.c=.o)
+SRCDIR=srcs/
+SRC=$(addprefix $(SRCDIR), $(CFILENAME))
+
+OBJDIR=objs/
+OBJ= $(addprefix $(OBJDIR), $(CFILENAME:.c=.o))
+
 
 all:$(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.c
-	$(CC) -c $^ $(CFLAGS) -o $@
+$(OBJDIR)%.o: $(SRCDIR)%.c
+	mkdir -p $(OBJDIR)
+	$(CC) -c $^ $(CFLAGS) -o $@ -I $(INCLUDEDIR)
 
 clean:
 	rm -f $(OBJ)
