@@ -12,26 +12,26 @@
 
 #include "fillit.h"
 
-static char					max(char a, char b)
+static char			max(char a, char b)
 {
 	return (a < b ? b : a);
 }
 
-static t_uint64_t			do_mask(t_tetriminos *tet)
+static t_uint64_t	do_mask(t_tetriminos *tet)
 {
 	t_uint64_t	mask;
 	t_uint16_t	*it;
 
 	mask = 0;
 	it = (t_uint16_t *)(&mask);
-	it[(short)tet->crds[0].y] |= 1L << tet->crds[0].x;
-	it[(short)tet->crds[1].y] |= 1L << tet->crds[1].x;
-	it[(short)tet->crds[2].y] |= 1L << tet->crds[2].x;
-	it[(short)tet->crds[3].y] |= 1L << tet->crds[3].x;
+	it[(short)tet->crds[0].y] |= 1 << tet->crds[0].x;
+	it[(short)tet->crds[1].y] |= 1 << tet->crds[1].x;
+	it[(short)tet->crds[2].y] |= 1 << tet->crds[2].x;
+	it[(short)tet->crds[3].y] |= 1 << tet->crds[3].x;
 	return (mask);
 }
 
-static void		tet_feed_mask(t_tetriminos *tet)
+static void			tet_feed_mask_lh(t_tetriminos *tet)
 {
 	tet->l = max(tet->crds[0].x, tet->crds[1].x);
 	tet->l = max(tet->l, tet->crds[2].x);
@@ -42,14 +42,14 @@ static void		tet_feed_mask(t_tetriminos *tet)
 	tet->mask = do_mask(tet);
 }
 
-void						feed_mask(t_memtet *memtet)
+void				feed_mask(t_memtet *memtet)
 {
 	short i;
 
 	i = 0;
 	while (i < memtet->nb_tet)
 	{
-		tet_feed_mask(&(memtet->ltet[i]));
+		tet_feed_mask_lh(&(memtet->ltet[i]));
 		i++;
 	}
 }

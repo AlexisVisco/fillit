@@ -17,7 +17,7 @@
 int			main(int argc, const char *argv[])
 {
 	t_memtet	mtet;
-	int			fd;
+	int					fd;
 
 	init_memtet(&mtet);
 	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) < 0)
@@ -26,10 +26,6 @@ int			main(int argc, const char *argv[])
 		return (2);
 	}
 	parse_input(&mtet, fd);
-	move_corner(&mtet);
-	feed_mask(&mtet);
-	if (!is_correct(&mtet))
-		exit_close(fd);
 	resolve(&mtet);
 	print_ltet_res(&mtet);
 	close(fd);

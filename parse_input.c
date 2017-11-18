@@ -14,8 +14,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <stdio.h>
-
 static int			feed_tet(t_coord *crd, short p, char c, int fd)
 {
 	if (p % 5 == 4 && c != '\n')
@@ -57,7 +55,7 @@ static t_tetriminos	string_to_tet(char *str, int fd)
 	return (tet);
 }
 
-static void			parse_tet(t_memtet *memtet, int fd)
+static void			parse_tet(t_memtet *mtet, int fd)
 {
 	char	buff[21];
 	int		len_read;
@@ -67,16 +65,16 @@ static void			parse_tet(t_memtet *memtet, int fd)
 	buff[len_read] = '\0';
 	if (len_read != 20)
 		exit_close(fd);
-	memtet->ltet[(short)memtet->nb_tet] = string_to_tet(buff, fd);
-	memtet->nb_tet++;
+	mtet->ltet[(short)mtet->nb_tet] = string_to_tet(buff, fd);
+	mtet->nb_tet++;
 }
 
-void				parse_input(t_memtet *memtet, int fd)
+void				parse_input(t_memtet *mtet, int fd)
 {
 	char	c;
 	int		len_read;
 
-	parse_tet(memtet, fd);
+	parse_tet(mtet, fd);
 	if ((len_read = read(fd, &c, 1)) == -1)
 		exit_close(fd);
 	if (!len_read)
@@ -85,8 +83,12 @@ void				parse_input(t_memtet *memtet, int fd)
 	{
 		if (c != '\n')
 			exit_close(fd);
-		parse_tet(memtet, fd);
+		parse_tet(mtet, fd);
 		if ((len_read = read(fd, &c, 1)) == -1)
 			exit_close(fd);
 	}
+	move_corner(mtet);
+	feed_mask(mtet);
+	if (!is_correct(mtet))
+		exit_close(fd);
 }
