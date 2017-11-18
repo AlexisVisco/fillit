@@ -89,6 +89,7 @@ void				parse_input(t_memtet *mtet, int fd)
 	}
 	move_corner(mtet);
 	feed_mask(mtet);
+	double_handler(mtet);
 	if (!is_correct(mtet))
 		exit_close(fd);
 }

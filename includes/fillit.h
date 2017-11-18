@@ -35,6 +35,7 @@ struct	s_tetriminos
 	char		y;
 	char		l;
 	char		h;
+	short		i_last;
 };
 
 struct	s_memtet
@@ -52,6 +53,7 @@ void	init_memtet(t_memtet *memtet);
 void	parse_input(t_memtet *memtet, int fd);
 void	move_corner(t_memtet *memtet);
 void	feed_mask(t_memtet *memtet);
+void	double_handler(t_memtet *mtet);
 char	is_correct(t_memtet *memtet);
 void	resolve(t_memtet *memtet);
 

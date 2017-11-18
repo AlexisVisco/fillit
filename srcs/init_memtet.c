@@ -19,6 +19,9 @@ void	init_memtet(t_memtet *memtet)
 		memtet->ltet[i].crds[3].y = 0;
 		memtet->ltet[i].x = 0;
 		memtet->ltet[i].y = 0;
+		memtet->ltet[i].l = 0;
+		memtet->ltet[i].h = 0;
+		memtet->ltet[i].i_last = 0;
 		i++;
 	}
 }

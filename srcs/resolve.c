@@ -28,7 +28,7 @@ static char					resolve_aux(t_memtet *mtet,
 	t_tetriminos	*tet;
 
 	tet = &(mtet->ltet[p]);
-	tet->y = 0;
+	tet->y = (tet->i_last >= 0 ? mtet->ltet[tet->i_last].y : 0);
 	while (tet->y + tet->h < mtet->c)
 	{
 		tet->x = 0;

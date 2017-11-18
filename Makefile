@@ -15,9 +15,9 @@ CC= gcc
 CFLAGS= -Wall -Wextra -Werror
 
 INCLUDEDIR=includes/
-CFILENAME= exit_close.c parse_input.c resolve.c main.c print_ltet.c is_correct.c \
-	 move_corner.c print_ltet_res.c inter_tet.c ft_putchar.c \
-	 feed_mask.c ft_bzero.c init_memtet.c
+CFILENAME= exit_close.c parse_input.c resolve.c main.c print_ltet.c \
+	 is_correct.c move_corner.c print_ltet_res.c inter_tet.c ft_putchar.c \
+	 double_handler.c feed_mask.c ft_bzero.c init_memtet.c
 
 SRCDIR=srcs/
 SRC=$(addprefix $(SRCDIR), $(CFILENAME))
