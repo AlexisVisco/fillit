@@ -29,9 +29,9 @@ static char					resolve_aux(t_memtet *mtet,
 
 	tet = &(mtet->ltet[p]);
 	tet->y = (tet->i_last >= 0 ? mtet->ltet[tet->i_last].y : 0);
+	tet->x = (tet->i_last >= 0 ? mtet->ltet[tet->i_last].x + 1 : 0);
 	while (tet->y + tet->h < mtet->c)
 	{
-		tet->x = 0;
 		while (tet->x + tet->l < mtet->c)
 		{
 			if (chek_map(tet, map))
@@ -45,6 +45,7 @@ static char					resolve_aux(t_memtet *mtet,
 			}
 			tet->x++;
 		}
+		tet->x = 0;
 		tet->y++;
 	}
 	return (0);
