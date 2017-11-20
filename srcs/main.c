@@ -6,7 +6,7 @@
 /*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:08:16 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/20 09:18:38 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/20 10:29:30 by cepalle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		main(int argc, const char *argv[])
 	init_memtet(&mtet);
 	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) < 0)
 	{
-		write(2, "error\n", 6);
+		write(1, "error\n", 6);
 		return (2);
 	}
 	parse_input(&mtet, fd);
