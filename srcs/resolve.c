@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   resolve_bit.c                                      :+:      :+:    :+:   */
+/*   resolve.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aviscogl <aviscogl@student.le101.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 08:37:15 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/16 09:40:36 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/20 09:35:54 by aviscogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static char					resolve_aux(t_memtet *mtet,
 	tet = &(mtet->ltet[p]);
 	tet->y = (tet->i_last >= 0 ? mtet->ltet[tet->i_last].y : 0);
 	tet->x = (tet->i_last >= 0 ? mtet->ltet[tet->i_last].x + 1 : 0);
-	while (tet->y + tet->h < mtet->c)
+	while (tet->y + tet->height < mtet->size_square)
 	{
-		while (tet->x + tet->l < mtet->c)
+		while (tet->x + tet->width < mtet->size_square)
 		{
 			if (chek_map(tet, map))
 			{
@@ -56,12 +56,12 @@ void						resolve(t_memtet *mtet)
 	t_uint16_t map[16];
 
 	ft_bzero(map, sizeof(t_uint16_t) * 16);
-	mtet->c = 2;
-	while (mtet->c * mtet->c < 4 * mtet->nb_tet)
-		mtet->c++;
-	while (!resolve_aux(mtet, map, 0) && mtet->c < 16)
+	mtet->size_square = 2;
+	while (mtet->size_square * mtet->size_square < 4 * mtet->nb_tet)
+		mtet->size_square++;
+	while (!resolve_aux(mtet, map, 0) && mtet->size_square < 16)
 	{
 		ft_bzero(map, sizeof(t_uint16_t) * 16);
-		mtet->c++;
+		mtet->size_square++;
 	}
 }

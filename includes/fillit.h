@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aviscogl <aviscogl@student.le101.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 19:26:00 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/16 09:38:13 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/20 09:34:44 by aviscogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ struct	s_tetriminos
 	t_uint64_t	mask;
 	char		x;
 	char		y;
-	char		l;
-	char		h;
+	char		width;
+	char		height;
 	short		i_last;
 };
 
@@ -42,7 +42,7 @@ struct	s_memtet
 {
 	t_tetriminos	ltet[26];
 	char			nb_tet;
-	char			c;
+	char			size_square;
 };
 
 void	ft_putchar(char c);

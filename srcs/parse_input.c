@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit_parse_input.c                               :+:      :+:    :+:   */
+/*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aviscogl <aviscogl@student.le101.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:25:33 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/13 20:00:29 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/20 09:41:20 by aviscogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ void				parse_input(t_memtet *mtet, int fd)
 
 	parse_tet(mtet, fd);
 	if ((len_read = read(fd, &c, 1)) == -1)
-		exit_close(fd);
-	if (!len_read)
 		exit_close(fd);
 	while (len_read)
 	{

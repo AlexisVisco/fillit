@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_memtet.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aviscogl <aviscogl@student.le101.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 09:18:47 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/20 09:18:50 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/20 09:40:29 by aviscogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_memtet(t_memtet *memtet)
 	short	i;
 
 	i = 0;
-	memtet->c = 2;
+	memtet->size_square = 2;
 	memtet->nb_tet = 0;
 	while (i < 26)
 	{
@@ -31,8 +31,8 @@ void	init_memtet(t_memtet *memtet)
 		memtet->ltet[i].crds[3].y = 0;
 		memtet->ltet[i].x = 0;
 		memtet->ltet[i].y = 0;
-		memtet->ltet[i].l = 0;
-		memtet->ltet[i].h = 0;
+		memtet->ltet[i].width = 0;
+		memtet->ltet[i].height = 0;
 		memtet->ltet[i].i_last = 0;
 		i++;
 	}

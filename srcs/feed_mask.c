@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memtet_to_bit.c                                    :+:      :+:    :+:   */
+/*   feed_mask.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aviscogl <aviscogl@student.le101.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 08:42:49 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/16 09:41:56 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/20 09:39:59 by aviscogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ static t_uint64_t	do_mask(t_tetriminos *tet)
 
 static void			tet_feed_mask_lh(t_tetriminos *tet)
 {
-	tet->l = max(tet->crds[0].x, tet->crds[1].x);
-	tet->l = max(tet->l, tet->crds[2].x);
-	tet->l = max(tet->l, tet->crds[3].x);
-	tet->h = max(tet->crds[0].y, tet->crds[1].y);
-	tet->h = max(tet->h, tet->crds[2].y);
-	tet->h = max(tet->h, tet->crds[3].y);
+	tet->width = max(tet->crds[0].x, tet->crds[1].x);
+	tet->width = max(tet->width, tet->crds[2].x);
+	tet->width = max(tet->width, tet->crds[3].x);
+	tet->height = max(tet->crds[0].y, tet->crds[1].y);
+	tet->height = max(tet->height, tet->crds[2].y);
+	tet->height = max(tet->height, tet->crds[3].y);
 	tet->mask = do_mask(tet);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_ltet_res.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aviscogl <aviscogl@student.le101.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 19:59:58 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/13 19:56:05 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/20 09:41:39 by aviscogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void		print_ltet_res(t_memtet *memtet)
 	short	yi;
 
 	yi = 0;
-	while (yi < memtet->c)
+	while (yi < memtet->size_square)
 	{
 		xi = 0;
-		while (xi < memtet->c)
+		while (xi < memtet->size_square)
 		{
 			print_inter(memtet, xi, yi);
 			xi++;
