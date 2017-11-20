@@ -6,7 +6,7 @@
 /*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:08:16 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/13 19:57:25 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/20 09:18:38 by cepalle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-int			main(int argc, const char *argv[])
+int		main(int argc, const char *argv[])
 {
 	t_memtet	mtet;
-	int					fd;
+	int			fd;
 
 	init_memtet(&mtet);
 	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) < 0)

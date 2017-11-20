@@ -6,7 +6,7 @@
 /*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 20:49:25 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/16 08:51:32 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/20 09:19:07 by cepalle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_bzero(void *s, t_size_t n)
 {
-	t_size_t			i;
+	t_size_t		i;
 	unsigned char	*ss;
 
 	i = 0;
