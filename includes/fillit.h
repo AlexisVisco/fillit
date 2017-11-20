@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le101.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 19:26:00 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/20 09:34:44 by aviscogl         ###   ########.fr       */
+/*   Updated: 2017/11/20 10:08:12 by aviscogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,7 @@ void	feed_mask(t_memtet *memtet);
 void	double_handler(t_memtet *mtet);
 char	is_correct(t_memtet *memtet);
 void	resolve(t_memtet *memtet);
-
-void	print_ltet(t_memtet *memtet);
 void	print_ltet_res(t_memtet *memtet);
-
-char	inter_tet(t_tetriminos *tet, short i, short j);
-char	inter_ltet(t_memtet *memtet, short p, short x, short y);
+char	touch_tet(t_tetriminos *tet, short i, short j);
 
 #endif

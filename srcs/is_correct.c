@@ -3,32 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   is_correct.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cepalle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aviscogl <aviscogl@student.le101.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 19:26:38 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/13 21:17:16 by cepalle          ###   ########.fr       */
+/*   Updated: 2017/11/20 10:08:58 by aviscogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static char	cal_nbv_2(t_tetriminos *tet, short x, short y)
+static char	has_two_neighbour(t_tetriminos *tet, short x, short y)
 {
 	short	nbv;
 
 	nbv = 0;
-	nbv += (inter_tet(tet, x + 1, y) && inter_tet(tet, x + 2, y));
-	nbv += (inter_tet(tet, x + 1, y) && inter_tet(tet, x + 1, y + 1));
-	nbv += (inter_tet(tet, x + 1, y) && inter_tet(tet, x + 1, y - 1));
-	nbv += (inter_tet(tet, x - 1, y) && inter_tet(tet, x - 2, y));
-	nbv += (inter_tet(tet, x - 1, y) && inter_tet(tet, x - 1, y + 1));
-	nbv += (inter_tet(tet, x - 1, y) && inter_tet(tet, x - 1, y - 1));
-	nbv += (inter_tet(tet, x, y + 1) && inter_tet(tet, x, y + 2));
-	nbv += (inter_tet(tet, x, y + 1) && inter_tet(tet, x + 1, y + 1));
-	nbv += (inter_tet(tet, x, y + 1) && inter_tet(tet, x - 1, y + 1));
-	nbv += (inter_tet(tet, x, y - 1) && inter_tet(tet, x, y - 2));
-	nbv += (inter_tet(tet, x, y - 1) && inter_tet(tet, x + 1, y - 1));
-	nbv += (inter_tet(tet, x, y - 1) && inter_tet(tet, x - 1, y - 1));
+	nbv += (touch_tet(tet, x + 1, y) && touch_tet(tet, x + 2, y));
+	nbv += (touch_tet(tet, x + 1, y) && touch_tet(tet, x + 1, y + 1));
+	nbv += (touch_tet(tet, x + 1, y) && touch_tet(tet, x + 1, y - 1));
+	nbv += (touch_tet(tet, x - 1, y) && touch_tet(tet, x - 2, y));
+	nbv += (touch_tet(tet, x - 1, y) && touch_tet(tet, x - 1, y + 1));
+	nbv += (touch_tet(tet, x - 1, y) && touch_tet(tet, x - 1, y - 1));
+	nbv += (touch_tet(tet, x, y + 1) && touch_tet(tet, x, y + 2));
+	nbv += (touch_tet(tet, x, y + 1) && touch_tet(tet, x + 1, y + 1));
+	nbv += (touch_tet(tet, x, y + 1) && touch_tet(tet, x - 1, y + 1));
+	nbv += (touch_tet(tet, x, y - 1) && touch_tet(tet, x, y - 2));
+	nbv += (touch_tet(tet, x, y - 1) && touch_tet(tet, x + 1, y - 1));
+	nbv += (touch_tet(tet, x, y - 1) && touch_tet(tet, x - 1, y - 1));
 	return (nbv);
 }
 
@@ -44,11 +44,11 @@ static char	is_not_tow(t_tetriminos *tet)
 	{
 		x = tet->crds[k].x;
 		y = tet->crds[k].y;
-		nbv = inter_tet(tet, x + 1, y) + inter_tet(tet, x, y + 1);
-		nbv += inter_tet(tet, x - 1, y) + inter_tet(tet, x, y - 1);
+		nbv = touch_tet(tet, x + 1, y) + touch_tet(tet, x, y + 1);
+		nbv += touch_tet(tet, x - 1, y) + touch_tet(tet, x, y - 1);
 		if (nbv >= 2)
 			return (1);
-		nbv = cal_nbv_2(tet, x, y);
+		nbv = has_two_neighbour(tet, x, y);
 		if (!nbv)
 			return (0);
 		k++;
@@ -65,10 +65,10 @@ static char	is_not_alone(t_tetriminos *tet)
 	while (k < 4)
 	{
 		it = 0;
-		it += inter_tet(tet, tet->crds[k].x + 1, tet->crds[k].y);
-		it += inter_tet(tet, tet->crds[k].x, tet->crds[k].y + 1);
-		it += inter_tet(tet, tet->crds[k].x - 1, tet->crds[k].y);
-		it += inter_tet(tet, tet->crds[k].x, tet->crds[k].y - 1);
+		it += touch_tet(tet, tet->crds[k].x + 1, tet->crds[k].y);
+		it += touch_tet(tet, tet->crds[k].x, tet->crds[k].y + 1);
+		it += touch_tet(tet, tet->crds[k].x - 1, tet->crds[k].y);
+		it += touch_tet(tet, tet->crds[k].x, tet->crds[k].y - 1);
 		if (!it)
 			return (0);
 		k++;

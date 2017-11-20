@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le101.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:25:33 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/20 09:41:20 by aviscogl         ###   ########.fr       */
+/*   Updated: 2017/11/20 10:12:22 by aviscogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ void				parse_input(t_memtet *mtet, int fd)
 		if ((len_read = read(fd, &c, 1)) == -1)
 			exit_close(fd);
 	}
+	if (!is_correct(mtet))
+		exit_close(fd);
 	move_corner(mtet);
 	feed_mask(mtet);
 	double_handler(mtet);
-	if (!is_correct(mtet))
-		exit_close(fd);
 }

@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le101.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 19:59:58 by cepalle           #+#    #+#             */
-/*   Updated: 2017/11/20 09:41:39 by aviscogl         ###   ########.fr       */
+/*   Updated: 2017/11/20 10:09:09 by aviscogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	print_inter(t_memtet *memtet, short x, short y)
 	k = 0;
 	while (k < memtet->nb_tet)
 	{
-		if (inter_tet(&memtet->ltet[k],
+		if (touch_tet(&memtet->ltet[k],
 			x - memtet->ltet[k].x,
 			y - memtet->ltet[k].y))
 		{
