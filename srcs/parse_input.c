@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le101.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:25:33 by cepalle           #+#    #+#             */
-/*   Updated: 2017/12/05 19:28:35 by cepalle     ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/06 15:40:23 by cepalle     ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ static void			parse_tet(t_memtet *mtet, int fd)
 	char	buff[21];
 	int		len_read;
 
-	if ((len_read = read(fd, buff, 20)) == -1)
+	if ((len_read = read(fd, buff, 20)) == -1 ||
+			mtet->nb_tet >= 26)
 		exit_close(fd);
 	buff[len_read] = '\0';
 	if (len_read != 20)
