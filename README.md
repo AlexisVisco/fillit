@@ -1,4 +1,4 @@
-# fillit
+# 42_fillit
 
 Fillit ne consiste pas à recoder Tetris, mais reste une variante du jeu dans l’esprit.
 Votre programme prendra en paramètre un fichier décrivant une liste de Tetriminos
